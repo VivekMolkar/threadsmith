@@ -3,8 +3,9 @@ import path from 'path';
 
 import { parseThread } from '../core/parser';
 import { validateThread } from '../core/validator';
+import { publishThread } from '../core/publisher';
 
-export function runPrepare(args: string[]): void {
+export async function runPrepare(args: string[]): Promise<void> {
   const filePath = args[0];
 
   if (!filePath) {
@@ -25,7 +26,7 @@ export function runPrepare(args: string[]): void {
     const thread = parseThread(input);
     validateThread(thread);
 
-    console.log(`Thread is valid (${thread.total} tweets).`);
+    await publishThread(thread);
   } catch (error) {
     if (error instanceof Error) {
       console.error(error.message);

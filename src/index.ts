@@ -7,7 +7,10 @@ const args = process.argv.slice(2);
 const command = args[0];
 
 if (command === 'prepare') {
-  runPrepare(args.slice(1));
+  runPrepare(args.slice(1)).catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
 } else {
   console.log('Unknown command.');
   console.log('Usage: threadsmith prepare <file>');
