@@ -1,5 +1,4 @@
 import readline from 'readline';
-import clipboard from 'clipboardy';
 import { Thread } from './types';
 
 export async function publishThread(thread: Thread): Promise<void> {
@@ -12,6 +11,7 @@ export async function publishThread(thread: Thread): Promise<void> {
     let clipboardAvailable = true;
 
     try {
+      const { default: clipboard } = await import('clipboardy');
       clipboard.writeSync(tweet.content);
     } catch {
       clipboardAvailable = false;
