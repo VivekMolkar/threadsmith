@@ -57,7 +57,7 @@ This is a **workflow tool**, not a bot.
 ## Installation
 
 ```bash
-git clone https://github.com/<your-username>/threadsmith.git
+git clone https://github.com/vivekmolkar/threadsmith.git
 cd threadsmith
 npm install
 ```
