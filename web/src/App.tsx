@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { parseThread } from '@core/parser';
 import { validateThread } from '@core/validator';
-import type { Thread } from '@core/types';
+import { Thread } from '@core/types';
 
 type ViewState = 'INPUT' | 'STEP' | 'DONE' | 'ERROR';
 
@@ -49,15 +49,18 @@ function App() {
     <main
       style={{
         maxWidth: 720,
-        margin: '40px auto',
+        margin: '48px auto',
         padding: '0 16px',
-        fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont',
+        fontFamily:
+          'system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif',
       }}
     >
       {view === 'INPUT' && (
         <>
           <h1>threadsmith</h1>
-          <p>A calm, human-in-the-loop way to publish threads.</p>
+          <p style={{ marginBottom: 16 }}>
+            A calm, human-in-the-loop way to publish threads.
+          </p>
 
           <textarea
             rows={10}
@@ -72,11 +75,14 @@ function App() {
             placeholder="Paste your full thread here. Separate tweets with a blank line."
           />
 
-          <div style={{ marginTop: 12 }}>
+          <div style={{ marginTop: 16 }}>
             <button
               onClick={handlePrepare}
               disabled={!rawInput.trim()}
-              style={{ padding: '8px 12px', fontWeight: 600 }}
+              style={{
+                padding: '8px 14px',
+                fontWeight: 600,
+              }}
             >
               Prepare thread
             </button>
@@ -85,8 +91,14 @@ function App() {
       )}
 
       {view === 'STEP' && thread && (
-        <>
-          <h2>
+        <div
+          style={{
+            border: '1px solid #e5e5e5',
+            borderRadius: 8,
+            padding: 16,
+          }}
+        >
+          <h2 style={{ marginTop: 0 }}>
             Tweet {index + 1} of {thread.total}
           </h2>
 
@@ -97,35 +109,51 @@ function App() {
               padding: 12,
               background: '#f7f7f7',
               borderRadius: 6,
-              marginBottom: 12,
+              marginBottom: 16,
+              minHeight: 140, // prevents button jump
             }}
           >
             {thread.tweets[index].content}
           </pre>
 
-          <button
-            onClick={() =>
-              navigator.clipboard.writeText(thread.tweets[index].content)
-            }
-            style={{ padding: '8px 12px', fontWeight: 600 }}
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}
           >
-            Copy
-          </button>
+            <button
+              onClick={() =>
+                navigator.clipboard.writeText(
+                  thread.tweets[index].content
+                )
+              }
+              style={{
+                padding: '8px 14px',
+                fontWeight: 600,
+              }}
+            >
+              Copy
+            </button>
 
-          <button
-            onClick={handleNext}
-            style={{ marginLeft: 8, padding: '8px 12px' }}
-          >
-            Next
-          </button>
-        </>
+            <button
+              onClick={handleNext}
+              style={{
+                padding: '8px 14px',
+              }}
+            >
+              Next
+            </button>
+          </div>
+        </div>
       )}
 
       {view === 'DONE' && (
         <>
           <h2>Done</h2>
           <p>You’ve reached the end of the thread.</p>
-          <button onClick={reset} style={{ padding: '8px 12px' }}>
+          <button onClick={reset} style={{ padding: '8px 14px' }}>
             Start over
           </button>
         </>
@@ -135,7 +163,7 @@ function App() {
         <>
           <h2>Error</h2>
           <p>{error}</p>
-          <button onClick={reset} style={{ padding: '8px 12px' }}>
+          <button onClick={reset} style={{ padding: '8px 14px' }}>
             Back
           </button>
         </>
