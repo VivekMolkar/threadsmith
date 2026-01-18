@@ -1,4 +1,4 @@
-import { Thread, Tweet } from './types';
+import type { Thread, Tweet } from './types';
 
 export function parseThread(input: string): Thread {
   if (!input || typeof input !== 'string') {
