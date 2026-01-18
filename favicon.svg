@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="none"/>
+
+  <!-- s (grass green, slightly behind) -->
+  <text
+    x="26"
+    y="42"
+    font-family="monospace"
+    font-size="40"
+    fill="#6FAF6A"
+    opacity="0.9"
+  >
+    s
+  </text>
+
+  <!-- t (muted yellow, overlapping base) -->
+  <text
+    x="18"
+    y="40"
+    font-family="monospace"
+    font-size="40"
+    fill="#E2C14C"
+    opacity="0.95"
+  >
+    t
+  </text>
+</svg>
