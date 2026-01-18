@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { parseThread } from '@core/parser';
 import { validateThread } from '@core/validator';
-import { Thread } from '@core/types';
+import type { Thread } from '@core/types';
 
 type ViewState = 'INPUT' | 'STEP' | 'DONE' | 'ERROR';
 

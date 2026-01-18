@@ -1,6 +1,16 @@
 # threadsmith
 
-A CLI tool to craft and publish threads with a guided, human-in-the-loop workflow.
+A calm, human-in-the-loop tool to craft and publish threads — now with a web demo and a CLI.
+
+---
+
+## Live Demo (recommended)
+
+Try threadsmith instantly in your browser — no install, no terminal, no setup:
+
+👉 https://vivekmolkar.github.io/threadsmith/
+
+The web demo is the **best way to experience the idea** behind threadsmith.
 
 ---
 
@@ -30,13 +40,46 @@ threadsmith helps you **publish threads calmly and correctly**.
 It:
 
 - takes a thread written as multiple blocks of text
-- validates platform constraints (e.g. tweet length)
-- guides you through publishing **one tweet at a time**
-- copies each tweet to the clipboard (when available)
-- degrades gracefully in headless environments
+- validates basic platform constraints (e.g. tweet length)
+- guides you through publishing **one post at a time**
+- preserves order and pacing
+- keeps the human fully in control
 
-You stay in control.  
-The tool handles the mechanics.
+The tool handles the mechanics.  
+You keep the intent.
+
+---
+
+## Two interfaces, same philosophy
+
+threadsmith provides the same workflow through two interfaces.
+
+### Web demo (recommended for most people)
+
+- works in any modern browser
+- reliable clipboard support
+- clear visual focus on one tweet at a time
+- zero setup
+
+This is the **primary, finished experience**.
+
+---
+
+### CLI (reference / power-user interface)
+
+The CLI was built first to model the workflow correctly.
+
+It:
+
+- runs locally from source
+- guides publishing step-by-step in the terminal
+- attempts clipboard support when available
+- falls back gracefully to manual copy when not
+
+The CLI remains useful for:
+- experimentation
+- scripting-oriented users
+- understanding the core design
 
 ---
 
@@ -54,7 +97,26 @@ This is a **workflow tool**, not a bot.
 
 ---
 
-## Installation
+## Using the web demo
+
+1. Paste your full thread into the input box  
+   (separate posts with a blank line)
+2. Click **Prepare**
+3. Publish one tweet at a time using:
+   - **Copy**
+   - **Next**
+
+That’s it.
+
+No accounts.  
+No background automation.  
+No surprises.
+
+---
+
+## Using the CLI (optional)
+
+### Installation
 
 ```bash
 git clone https://github.com/vivekmolkar/threadsmith.git
@@ -62,11 +124,7 @@ cd threadsmith
 npm install
 ```
 
-(For now, threadsmith is intended to be run locally from source.)
-
----
-
-## Usage
+### Usage
 
 Prepare a thread file where **each tweet is separated by a blank line**.
 
@@ -89,42 +147,21 @@ Run:
 npm run dev -- prepare thread.txt
 ```
 
----
+The CLI will guide you step-by-step through publishing.
 
-## What happens next
-
-threadsmith will:
-
-1. Parse and validate the thread
-2. For each tweet:
-   - copy it to the clipboard (if available)
-   - print it clearly in the terminal
-   - wait for you to press **ENTER**
-3. Move to the next tweet
-4. Finish cleanly when done
-
-In headless environments (containers, SSH), clipboard access is skipped and the tool falls back to manual copy.
-
----
-
-## Supported environments
-
-- macOS (clipboard supported)
-- Linux desktop (clipboard supported)
-- Linux containers / SSH (manual copy fallback)
-- Windows (clipboard supported)
-
-The behavior is explicit and predictable across environments.
+> Clipboard support depends on the host OS and terminal.  
+> When unavailable, threadsmith falls back to manual copy while preserving the guided flow.
 
 ---
 
 ## Project status
 
-- v0: core workflow implemented
-- CLI-first
-- platform-agnostic thread model
+- v1: core workflow complete
+- Web demo available and hosted
+- CLI retained as reference interface
+- Shared, platform-agnostic core logic
 
-Future improvements will remain intentionally minimal.
+Future changes will remain intentionally minimal.
 
 ---
 
@@ -132,7 +169,8 @@ Future improvements will remain intentionally minimal.
 
 > Automation should remove friction, not remove thinking.
 
-threadsmith exists to support careful writing and intentional publishing — not to replace it.
+threadsmith exists to support **intentional publishing** —  
+not growth hacking, scheduling, or disengaged automation.
 
 ---
 
